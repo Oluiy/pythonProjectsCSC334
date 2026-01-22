@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Cultivar Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Lato', sans-serif; margin: 0; padding: 0; background-color: #f9f5f6; color: #4a4a4a; }
+        .wrapper { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .container { width: 100%; max-width: 600px; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(114, 47, 55, 0.15); border: 1px solid #efe6e8; }
+        h1 { font-family: 'Playfair Display', serif; text-align: center; color: #722f37; margin-bottom: 30px; font-size: 2.2em; }
+        form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; }
+        .form-group.full-width { grid-column: span 2; }
+        label { margin-bottom: 8px; font-weight: 700; color: #555; }
+        input { padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; transition: border-color 0.3s; }
+        input:focus { border-color: #722f37; outline: none; }
+        button { grid-column: span 2; padding: 15px; background-color: #722f37; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1em; font-weight: bold; transition: background 0.3s; margin-top: 10px; }
+        button:hover { background-color: #5a252c; }
+        .result { grid-column: span 2; margin-top: 25px; padding: 20px; background-color: #fdf2f4; border: 2px solid #eecdd2; border-radius: 8px; text-align: center; color: #722f37; }
+        .result h2 { margin: 0; font-family: 'Playfair Display', serif; }
+        @media (max-width: 500px) { form { grid-template-columns: 1fr; .form-group.full-width { grid-column: span 1; } button { grid-column: span 1; } .result { grid-column: span 1; } } }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h1>Wine Origin Predictor</h1>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="alcohol">Alcohol</label>
+                    <input type="number" id="alcohol" name="alcohol" step="0.01" required placeholder="e.g. 13.5">
+                </div>
+                <div class="form-group">
+                    <label for="magnesium">Magnesium</label>
+                    <input type="number" id="magnesium" name="magnesium" step="0.1" required placeholder="e.g. 100">
+                </div>
+                <div class="form-group">
+                    <label for="flavanoids">Flavanoids</label>
+                    <input type="number" id="flavanoids" name="flavanoids" step="0.01" required placeholder="e.g. 2.6">
+                </div>
+                <div class="form-group">
+                    <label for="color_intensity">Color Intensity</label>
+                    <input type="number" id="color_intensity" name="color_intensity" step="0.01" required placeholder="e.g. 4.5">
+                </div>
+                <div class="form-group">
+                    <label for="hue">Hue</label>
+                    <input type="number" id="hue" name="hue" step="0.001" required placeholder="e.g. 1.05">
+                </div>
+                <div class="form-group">
+                    <label for="proline">Proline</label>
+                    <input type="number" id="proline" name="proline" step="1" required placeholder="e.g. 1000">
+                </div>
+                <button type="submit">Predict Cultivar</button>
+                
+                {% if prediction %}
+                <div class="result">
+                    <h2>Prediction: {{ prediction }}</h2>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

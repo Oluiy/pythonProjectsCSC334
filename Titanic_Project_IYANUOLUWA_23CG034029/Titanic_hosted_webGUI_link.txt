@@ -1,0 +1,6 @@
+Name: Iyanuoluwa
+Matric Number: 23CG034029
+Machine Learning Algorithm Used: Logistic Regression
+Model persistence method used: Joblib
+Live URL of the hosted application: [ INSERT YOUR VERCEL URL HERE ]
+GitHub repository link: [ INSERT YOUR GITHUB REPO URL HERE ]

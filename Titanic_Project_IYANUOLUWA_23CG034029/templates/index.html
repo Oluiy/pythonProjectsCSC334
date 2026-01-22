@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #e0f7fa; color: #333; }
+        .container { max-width: 500px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #006064; margin-bottom: 25px; }
+        form { display: grid; gap: 15px; }
+        label { font-weight: 600; font-size: 0.9em; margin-bottom: 5px; display: block; }
+        input, select, button { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; box-sizing: border-box; }
+        button { background-color: #0097a7; color: white; border: none; cursor: pointer; transition: background 0.3s; font-weight: bold; }
+        button:hover { background-color: #006064; }
+        .result { margin-top: 25px; padding: 20px; text-align: center; border-radius: 5px; font-size: 1.2em; font-weight: bold; }
+        .survived { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .died { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .error { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Titanic Survival Predictor</h1>
+        <form method="POST">
+            <div>
+                <label for="pclass">Passenger Class:</label>
+                <select id="pclass" name="pclass" required>
+                    <option value="1">1st Class (Upper)</option>
+                    <option value="2">2nd Class (Middle)</option>
+                    <option value="3">3rd Class (Lower)</option>
+                </select>
+            </div>
+            <div>
+                <label for="sex">Sex:</label>
+                <select id="sex" name="sex" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="1" max="100" step="0.5" required placeholder="e.g. 29">
+            </div>
+            <div>
+                <label for="fare">Fare (£):</label>
+                <input type="number" id="fare" name="fare" min="0" step="0.01" required placeholder="e.g. 32.5">
+            </div>
+            <div>
+                <label for="embarked">Port of Embarkation:</label>
+                <select id="embarked" name="embarked" required>
+                    <option value="S">Southampton</option>
+                    <option value="C">Cherbourg</option>
+                    <option value="Q">Queenstown</option>
+                </select>
+            </div>
+            <button type="submit">Predict Survival</button>
+        </form>
+
+        {% if prediction %}
+            {% if prediction == 'Survived' %}
+                <div class="result survived">
+                    Result: {{ prediction }}
+                </div>
+            {% elif prediction == 'Did Not Survive' %}
+                <div class="result died">
+                    Result: {{ prediction }}
+                </div>
+            {% else %}
+                 <div class="result error">
+                    {{ prediction }}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        form { display: grid; gap: 10px; }
+        label { font-weight: bold; }
+        input, select, button { padding: 10px; width: 100%; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        .result { margin-top: 20px; padding: 15px; background-color: #e9ecef; border-left: 5px solid #28a745; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>House Price Predictor</h1>
+        <form method="POST">
+            <div>
+                <label for="overall_qual">Overall Quality (1-10):</label>
+                <input type="number" id="overall_qual" name="overall_qual" min="1" max="10" required>
+            </div>
+            <div>
+                <label for="gr_liv_area">Above Ground Living Area (sq ft):</label>
+                <input type="number" id="gr_liv_area" name="gr_liv_area" required>
+            </div>
+            <div>
+                <label for="garage_cars">Garage Cars (0-4):</label>
+                <input type="number" id="garage_cars" name="garage_cars" min="0" max="4" required>
+            </div>
+            <div>
+                <label for="full_bath">Full Bathrooms:</label>
+                <input type="number" id="full_bath" name="full_bath" required>
+            </div>
+            <div>
+                <label for="year_built">Year Built:</label>
+                <input type="number" id="year_built" name="year_built" min="1800" max="2025" required>
+            </div>
+            <div>
+                <label for="neighborhood">Neighborhood:</label>
+                <select id="neighborhood" name="neighborhood" required>
+                    <option value="CollgCr">College Creek</option>
+                    <option value="Veenker">Veenker</option>
+                    <option value="Crawfor">Crawford</option>
+                    <option value="NoRidge">Northridge</option>
+                    <option value="Mitchel">Mitchell</option>
+                </select>
+            </div>
+            <button type="submit">Predict Price</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>Predicted Price: ${{ prediction }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
