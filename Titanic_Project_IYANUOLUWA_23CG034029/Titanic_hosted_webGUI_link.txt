@@ -2,6 +2,6 @@ Name: Iyanuoluwa
 Matric Number: 23CG034029
 Machine Learning Algorithm Used: Logistic Regression
 Model persistence method used: Joblib
-Live URL of the hosted application: [ INSERT YOUR VERCEL URL HERE ]
-GitHub repository link: https://github.com/Oluiy/pythonProjectsCSC334/tree/main/Titanic_Project_IYANUOLUWA_23CG034029
+Live URL of the hosted application: https://python-projects-csc-334-4ao6.vercel.app/
+GitHub repository link: https://github.com/Oluiy/pythonProjectsCSC334
 

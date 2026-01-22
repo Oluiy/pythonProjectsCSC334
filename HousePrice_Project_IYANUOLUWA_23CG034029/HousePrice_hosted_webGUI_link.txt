@@ -2,6 +2,6 @@ Name: Iyanuoluwa
 Matric Number: 23CG034029
 Machine Learning Algorithm Used: Random Forest Regressor
 Model persistence method used: Joblib
-Live URL of the hosted application: [ INSERT YOUR RENDER URL HERE ]
-GitHub repository link: https://github.com/Oluiy/pythonProjectsCSC334/tree/main/HousePrice_Project_IYANUOLUWA_23CG034029
+Live URL of the hosted application: https://house-price-prediction-2eef.onrender.com
+GitHub repository link: https://github.com/Oluiy/pythonProjectsCSC334
 
